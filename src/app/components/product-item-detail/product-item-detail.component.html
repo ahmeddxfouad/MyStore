@@ -1,0 +1,25 @@
+<div *ngIf="product; else notFound" class="product-detail">
+  <img [src]="product.url" [alt]="product.name" class="product-detail__image" />
+
+  <div class="product-detail__info">
+    <h2>{{ product.name }}</h2>
+    <p class="product-detail__price">\${{ product.price }}</p>
+    <p class="product-detail__description">{{ product.description }}</p>
+
+    <label>
+      Quantity:
+      <input
+        type="number"
+        min="1"
+        [(ngModel)]="quantity"
+        name="quantity"
+      />
+    </label>
+
+    <button (click)="addToCart()">Add to Cart</button>
+  </div>
+</div>
+
+<ng-template #notFound>
+  <p>Product not found.</p>
+</ng-template>

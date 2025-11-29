@@ -1,0 +1,124 @@
+/* ===== Global reset / base ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+  Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Grey background fills whole page */
+body {
+  background-color: #f5f5f5;
+}
+
+/* App root just stretches full width, no centering logic here */
+app-root {
+  display: block;
+  min-height: 100vh;
+}
+
+/* White container that holds everything */
+.app-shell {
+  max-width: 1200px;
+  margin: 0 auto;              /* center horizontally */
+  min-height: 100vh;           /* at least full viewport height */
+  background-color: #ffffff;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main content area inside the white shell */
+.app-shell main {
+  padding: 1.5rem;
+  flex: 1;
+}
+
+/* ===== Typography helpers ===== */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin-top: 0;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Buttons */
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.95rem;
+  background-color: #1976d2;
+  color: #ffffff;
+  transition: background-color 0.15s ease;
+}
+
+button:hover {
+  background-color: #125a9c;
+}
+
+/* Forms */
+input,
+select,
+textarea {
+  font: inherit;
+  padding: 0.35rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+label {
+  font-size: 0.9rem;
+}
+
+/* Product list basic grid (component CSS can refine it) */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1rem;
+}
+
+/* Simple card for items (in case component CSS is minimal) */
+.product-item {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.product-item img {
+  max-width: 100%;
+  display: block;
+  margin-bottom: 0.5rem;
+}

@@ -1,0 +1,45 @@
+<h2>Checkout</h2>
+
+<p>Order total: \${{ total }}</p>
+
+<form (ngSubmit)="onSubmit()" #checkoutForm="ngForm">
+  <div>
+    <label>
+      Name:
+      <input
+        name="name"
+        [(ngModel)]="name"
+        required
+        minlength="3"
+      />
+    </label>
+  </div>
+
+  <div>
+    <label>
+      Address:
+      <input
+        name="address"
+        [(ngModel)]="address"
+        required
+      />
+    </label>
+  </div>
+
+  <div>
+    <label>
+      Credit Card Number:
+      <input
+        name="creditCard"
+        [(ngModel)]="creditCard"
+        required
+        minlength="16"
+        maxlength="16"
+      />
+    </label>
+  </div>
+
+  <button type="submit" [disabled]="!checkoutForm.form.valid">
+    Submit Order
+  </button>
+</form>
