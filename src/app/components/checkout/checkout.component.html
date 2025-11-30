@@ -1,45 +1,69 @@
-<h2>Checkout</h2>
+<div class="checkout-page">
+  <h2>Checkout</h2>
 
-<p>Order total: \${{ total }}</p>
+  <p>Order total: \${{ total }}</p>
 
-<form (ngSubmit)="onSubmit()" #checkoutForm="ngForm">
-  <div>
-    <label>
-      Name:
+  <form (ngSubmit)="onSubmit()" #checkoutForm="ngForm" novalidate>
+    <div class="form-field">
+      <label for="name">Name:</label>
       <input
+        id="name"
         name="name"
         [(ngModel)]="name"
+        (ngModelChange)="onNameChange($event)"
         required
         minlength="3"
+        #nameCtrl="ngModel"
       />
-    </label>
-  </div>
+      <div
+        class="error"
+        *ngIf="(nameCtrl.invalid && nameCtrl.touched) || nameError"
+      >
+        {{ nameError || 'Name is required and must be at least 3 characters.' }}
+      </div>
+    </div>
 
-  <div>
-    <label>
-      Address:
+    <div class="form-field">
+      <label for="address">Address:</label>
       <input
+        id="address"
         name="address"
         [(ngModel)]="address"
+        (ngModelChange)="onAddressChange($event)"
         required
+        minlength="5"
+        #addressCtrl="ngModel"
       />
-    </label>
-  </div>
+      <div
+        class="error"
+        *ngIf="(addressCtrl.invalid && addressCtrl.touched) || addressError"
+      >
+        {{ addressError || 'Address is required and must be at least 5 characters.' }}
+      </div>
+    </div>
 
-  <div>
-    <label>
-      Credit Card Number:
+    <div class="form-field">
+      <label for="creditCard">Credit Card Number:</label>
       <input
+        id="creditCard"
         name="creditCard"
         [(ngModel)]="creditCard"
+        (ngModelChange)="onCreditCardChange($event)"
         required
         minlength="16"
         maxlength="16"
+        #ccCtrl="ngModel"
       />
-    </label>
-  </div>
+      <div
+        class="error"
+        *ngIf="(ccCtrl.invalid && ccCtrl.touched) || creditCardError"
+      >
+        {{ creditCardError || 'Credit card must be 16 digits.' }}
+      </div>
+    </div>
 
-  <button type="submit" [disabled]="!checkoutForm.form.valid">
-    Submit Order
-  </button>
-</form>
+    <button type="submit" [disabled]="!checkoutForm.form.valid">
+      Submit Order
+    </button>
+  </form>
+</div>

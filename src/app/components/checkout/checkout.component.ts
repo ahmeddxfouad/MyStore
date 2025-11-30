@@ -13,6 +13,10 @@ export class CheckoutComponent {
   creditCard: string = '';
   total: number = 0;
 
+  nameError: string = '';
+  addressError: string = '';
+  creditCardError: string = '';
+
   constructor(
     private cartService: CartService,
     private router: Router
@@ -20,9 +24,42 @@ export class CheckoutComponent {
     this.total = this.cartService.getTotal();
   }
 
+  onNameChange(value: string): void {
+    if (!value || value.trim().length < 3) {
+      this.nameError = 'Name must be at least 3 characters long.';
+    } else {
+      this.nameError = '';
+    }
+  }
+
+  onAddressChange(value: string): void {
+    if (!value || value.trim().length < 5) {
+      this.addressError = 'Address must be at least 5 characters long.';
+    } else {
+      this.addressError = '';
+    }
+  }
+
+  onCreditCardChange(value: string): void {
+    const digitsOnly = value.replace(/\D/g, '');
+    if (digitsOnly.length !== 16) {
+      this.creditCardError = 'Credit card number must be exactly 16 digits.';
+    } else {
+      this.creditCardError = '';
+    }
+  }
+
   onSubmit(): void {
-    if (!this.name || !this.address || !this.creditCard) {
-      window.alert('Please fill in all fields.');
+    // final guard, in case user tries to submit with invalid data
+    if (
+      this.nameError ||
+      this.addressError ||
+      this.creditCardError ||
+      !this.name ||
+      !this.address ||
+      !this.creditCard
+    ) {
+      window.alert('Please fix validation errors before submitting.');
       return;
     }
 

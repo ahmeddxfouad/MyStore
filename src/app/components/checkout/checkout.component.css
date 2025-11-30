@@ -1,0 +1,32 @@
+.checkout-page {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.checkout-page h2 {
+  margin-bottom: 0.75rem;
+}
+
+.checkout-page p {
+  margin-top: 0;
+}
+
+.form-field {
+  margin-bottom: 0.75rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field label {
+  margin-bottom: 0.25rem;
+}
+
+.form-field input {
+  max-width: 100%;
+}
+
+.error {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: #d32f2f;
+}
