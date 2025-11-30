@@ -351,5 +351,3 @@ This section explains how the project aligns with the Udacity MyStore rubric:
 - Display a cart badge in the header with item count and/or total cost.
 
 ---
-
-Happy coding! 🚀
